@@ -12,6 +12,8 @@ namespace Nop.Web.Models.Customer
 
         public string Result { get; set; }
 
+        public bool SuccessSend { get; set; }
+
         public bool DisplayCaptcha { get; set; }
     }
 }

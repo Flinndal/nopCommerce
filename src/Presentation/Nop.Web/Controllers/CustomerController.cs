@@ -606,6 +606,7 @@ namespace Nop.Web.Controllers
             {
                 ModelState.AddModelError("", await _localizationService.GetResourceAsync("Common.WrongCaptchaMessage"));
             }
+            model.SuccessSend = false;
 
             if (ModelState.IsValid)
             {
@@ -625,6 +626,7 @@ namespace Nop.Web.Controllers
                         (await _workContext.GetWorkingLanguageAsync()).Id);
 
                     model.Result = await _localizationService.GetResourceAsync("Account.PasswordRecovery.EmailHasBeenSent");
+                    model.SuccessSend = true;
                 }
                 else
                 {
