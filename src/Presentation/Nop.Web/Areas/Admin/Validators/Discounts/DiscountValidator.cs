@@ -12,6 +12,8 @@ namespace Nop.Web.Areas.Admin.Validators.Discounts
         public DiscountValidator(ILocalizationService localizationService, INopDataProvider dataProvider)
         {
             RuleFor(x => x.Name).NotEmpty().WithMessageAwait(localizationService.GetResourceAsync("Admin.Promotions.Discounts.Fields.Name.Required"));
+            
+            RuleFor(x => x.DiscountTypeId).NotEqual((int)DiscountType.AssignedToOrderTotal).WithMessageAwait(localizationService.GetResourceAsync("Admin.Promotions.Discounts.Fields.DiscountType.NotSupported"));
 
             SetDatabaseValidationRules<Discount>(dataProvider);
         }
